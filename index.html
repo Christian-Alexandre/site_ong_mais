@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONG Mais — Conectando voluntários a quem precisa</title>
+<meta name="description" content="ONG Mais: encontre ONGs perto de você, veja campanhas e fale direto pelo WhatsApp. Baixe o app para Android.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="logo.png">
+<meta property="og:image" content="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#078a73; --verde-esc:#0a5a50; --menta:#d6f3ea;
+    --coral:#ff7a59; --creme:#fbf7f0; --tinta:#1c2420; --cinza:#5b6660;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',system-ui,sans-serif;background:var(--creme);color:var(--tinta);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* topo */
+  header{padding:22px 0}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:800;font-size:1.4rem;color:var(--verde-esc);text-decoration:none}
+  .logo img{width:42px;height:42px;border-radius:11px;display:block}
+  nav a{margin-left:26px;text-decoration:none;color:var(--cinza);font-weight:500}
+  nav a:hover{color:var(--verde)}
+
+  /* hero */
+  .hero{padding:48px 0 90px}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .tag{display:inline-block;background:var(--menta);color:var(--verde-esc);font-weight:700;font-size:.85rem;padding:6px 14px;border-radius:99px;margin-bottom:22px}
+  h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(2.4rem,5vw,4rem);line-height:1.05;color:var(--verde-esc);letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--coral)}
+  .lead{font-size:1.15rem;color:var(--cinza);margin:22px 0 34px;max-width:34ch}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--verde);color:#fff;text-decoration:none;font-weight:700;font-size:1.05rem;padding:18px 30px;border-radius:16px;box-shadow:0 10px 24px -8px rgba(7,138,115,.55);transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{transform:translateY(-2px);background:var(--verde-esc);box-shadow:0 14px 30px -8px rgba(7,138,115,.6)}
+  .btn svg{width:24px;height:24px}
+  .meta{margin-top:14px;font-size:.88rem;color:var(--cinza)}
+
+  /* celular */
+  .phone{justify-self:center;width:280px;height:570px;border-radius:44px;background:var(--tinta);padding:12px;box-shadow:0 40px 80px -30px rgba(19,66,50,.5);transform:rotate(3deg);position:relative}
+  .phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:80px;height:20px;border-radius:99px;background:#000;z-index:2}
+  .screen{width:100%;height:100%;border-radius:34px;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+  .scr-top{background:linear-gradient(135deg,#0a6c62,#00b692);color:#fff;padding:52px 18px 18px}
+  .scr-top small{opacity:.8;font-size:.75rem}
+  .scr-top img{width:34px;height:34px;border-radius:9px;float:right;margin-top:-4px;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+  .scr-top b{display:block;font-family:'Fraunces',serif;font-size:1.25rem}
+  .scr-body{padding:14px;display:flex;flex-direction:column;gap:10px;background:#f4f7f5;flex:1}
+  .card{background:#fff;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  .card .img{height:62px;border-radius:10px;margin-bottom:8px}
+  .card b{font-size:.85rem;display:block}
+  .card small{font-size:.72rem;color:var(--cinza)}
+  .pill{display:inline-block;font-size:.65rem;font-weight:700;background:var(--menta);color:var(--verde-esc);padding:2px 8px;border-radius:99px;margin-top:6px}
+  .i1{background:linear-gradient(135deg,#ffb199,#ff7a59)}
+  .i2{background:linear-gradient(135deg,#9fd8bd,#1f6b4f)}
+  .i3{background:linear-gradient(135deg,#ffe29a,#f5b641)}
+
+  /* recursos */
+  section{padding:90px 0}
+  .sec-title{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(1.9rem,3.5vw,2.6rem);color:var(--verde-esc);line-height:1.15;max-width:20ch}
+  .sec-sub{color:var(--cinza);margin-top:12px;max-width:52ch}
+  .recursos{background:#fff}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+  .feat{border:1.5px solid #e8ede9;border-radius:22px;padding:30px}
+  .feat .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px}
+  .feat .ico svg{width:26px;height:26px}
+  .feat h3{font-size:1.2rem;margin-bottom:8px}
+  .feat p{color:var(--cinza);font-size:.97rem}
+
+  /* como funciona */
+  .passos{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px;counter-reset:p}
+  .passo{counter-increment:p}
+  .passo::before{content:counter(p);font-family:'Fraunces',serif;font-weight:800;font-size:3.2rem;color:var(--coral);line-height:1;display:block;margin-bottom:10px}
+  .passo h3{font-size:1.15rem;margin-bottom:6px}
+  .passo p{color:var(--cinza)}
+
+  /* cta */
+  .cta{padding:0 0 90px}
+  .cta-box{background:linear-gradient(135deg,#0a5a50,#078a73);color:#fff;border-radius:32px;padding:64px 48px;text-align:center;position:relative;overflow:hidden}
+  .cta-box::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:var(--coral);opacity:.18;right:-90px;top:-120px}
+  .cta-logo{width:84px;height:84px;border-radius:22px;margin:0 auto 22px;display:block;position:relative;box-shadow:0 12px 30px -10px rgba(0,0,0,.45)}
+  .cta-box h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.5vw,2.7rem);line-height:1.15;position:relative}
+  .cta-box p{opacity:.8;margin:14px auto 32px;max-width:44ch;position:relative}
+  .cta-box .btn{background:var(--coral);box-shadow:0 10px 24px -8px rgba(0,0,0,.4);position:relative}
+  .cta-box .btn:hover{background:#ff6a45}
+  .hint{margin-top:22px;font-size:.85rem;opacity:.7;position:relative}
+
+  footer{padding:30px 0 40px;color:var(--cinza);font-size:.9rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid #e3e6e2;padding-top:26px}
+
+  @media (max-width:860px){
+    nav{display:none}
+    .hero .wrap{grid-template-columns:1fr;text-align:center}
+    .lead{margin-left:auto;margin-right:auto}
+    .phone{transform:none;margin-top:20px}
+    .grid,.passos{grid-template-columns:1fr}
+    .cta-box{padding:48px 24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#" class="logo"><img src="logo.png" alt="Logo ONG Mais">ONG Mais</a>
+    <nav>
+      <a href="#recursos">Recursos</a>
+      <a href="#como">Como funciona</a>
+      <a href="#baixar">Baixar</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-top:48px">
+    <div class="wrap">
+      <div>
+        <span class="tag">📍 Voluntariado perto de você</span>
+        <h1>Quem quer ajudar encontra <em>quem precisa.</em></h1>
+        <p class="lead">O ONG Mais conecta voluntários a ONGs da sua região. Veja campanhas, encontre instituições no mapa e fale direto pelo WhatsApp.</p>
+        <a class="btn" href="downloads/ONG_Mais.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Baixar para Android
+        </a>
+        <p class="meta">Arquivo APK · 53 MB · gratuito</p>
+      </div>
+
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="scr-top"><img src="logo.png" alt=""><small>Olá, voluntário 👋</small><b>Campanhas perto de você</b></div>
+          <div class="scr-body">
+            <div class="card"><div class="img i1"></div><b>Arrecadação de agasalhos</b><small>Casa Esperança · 1,2 km</small><br><span class="pill">Doação</span></div>
+            <div class="card"><div class="img i2"></div><b>Mutirão no abrigo de animais</b><small>Patas Unidas · 3,8 km</small><br><span class="pill">Voluntariado</span></div>
+            <div class="card"><div class="img i3"></div><b>Reforço escolar aos sábados</b><small>Instituto Aprender · 5 km</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recursos" id="recursos">
+    <div class="wrap">
+      <h2 class="sec-title">Tudo o que você precisa para fazer a diferença</h2>
+      <p class="sec-sub">Um jeito simples de descobrir onde sua ajuda é necessária, sem cadastro complicado.</p>
+      <div class="grid">
+        <div class="feat">
+          <div class="ico" style="background:#ffe6de;color:var(--coral)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h6"/></svg>
+          </div>
+          <h3>Feed de campanhas</h3>
+          <p>Acompanhe as campanhas das ONGs: doações, mutirões, eventos e vagas de voluntariado.</p>
+        </div>
+        <div class="feat">
+          <div class="ico" style="background:var(--menta);color:var(--verde)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          </div>
+          <h3>Mapa por raio</h3>
+          <p>Escolha a distância e veja no mapa as ONGs mais próximas da sua localização.</p>
+        </div>
+        <div class="feat">
+          <div class="ico" style="background:#fff2cf;color:#c98a00">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg>
+          </div>
+          <h3>Contato pelo WhatsApp</h3>
+          <p>Gostou de uma campanha? Um toque e você já está conversando com a ONG.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <h2 class="sec-title">Como funciona</h2>
+      <div class="passos">
+        <div class="passo"><h3>Baixe o app</h3><p>Instale o APK no seu celular Android e permita o acesso à localização.</p></div>
+        <div class="passo"><h3>Encontre uma causa</h3><p>Navegue pelo feed ou pelo mapa e descubra ONGs e campanhas perto de você.</p></div>
+        <div class="passo"><h3>Entre em contato</h3><p>Fale com a ONG pelo WhatsApp e combine como você pode ajudar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta" id="baixar">
+    <div class="wrap">
+      <div class="cta-box">
+        <img class="cta-logo" src="logo.png" alt="Logo ONG Mais">
+        <h2>Pronto para começar a ajudar?</h2>
+        <p>Baixe o ONG Mais e descubra as causas que estão esperando por você.</p>
+        <a class="btn" href="downloads/ONG_Mais.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Baixar APK
+        </a>
+        <p class="hint">Ao instalar, o Android pode pedir para permitir "instalar apps de fontes desconhecidas".</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="ano"></span> ONG Mais · Projeto acadêmico de Engenharia de Software</span>
+    <a href="https://github.com/Christian-Alexandre/Ong_Mais" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+</body>
+</html>
