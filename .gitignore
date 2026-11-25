@@ -1,3 +1,6 @@
 publicar_github.bat
+configurar_envio_automatico.bat
+remover_envio_automatico.bat
+sync_github.ps1
 saida_github.txt
 downloads/COLOQUE_O_APK_AQUI.txt
