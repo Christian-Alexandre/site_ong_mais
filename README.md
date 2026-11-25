@@ -14,3 +14,8 @@ Página de apresentação do app ONG Mais com botão de download do APK.
 3. Suba esta pasta num repositório GitHub (ou use `npx vercel` aqui dentro)
 4. No Vercel: New Project → importe o repo → Framework Preset: **Other** → Deploy
    (não precisa de build command nem output directory)
+
+## Publicação automática
+Uma tarefa agendada do Windows ("ONG Mais - Publicar site") verifica esta pasta a cada 5 minutos
+e envia para o GitHub qualquer arquivo novo ou alterado (`sync_github.ps1`). O resultado fica em
+`saida_github.txt`. Para desligar: `remover_envio_automatico.bat`.
