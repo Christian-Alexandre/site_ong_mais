@@ -1,6 +1,8 @@
 publicar_github.bat
 configurar_envio_automatico.bat
 remover_envio_automatico.bat
+corrigir_janela.bat
 sync_github.ps1
+sync_oculto.vbs
 saida_github.txt
 downloads/COLOQUE_O_APK_AQUI.txt
